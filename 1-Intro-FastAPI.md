@@ -1,4 +1,4 @@
-# Perkenalan REST API menggunakan framework FastAPI
+# 1 - Perkenalan REST API menggunakan framework FastAPI
 
 ## Persiapan
 
@@ -37,7 +37,7 @@ def health_check():
 
 Disini kita menyatakan bahwa setiap request `GET` ke endpoint `/health` akan ditangani oleh method `health_check`.
 
-Untuk mengetes API yang sudah kita buat, kita jalankan uvicorn
+Untuk mengetes API yang sudah kita buat, kita jalankan web server uvicorn
 
 ```bash
 cd api
@@ -49,10 +49,15 @@ Lalu buka browser anda ke [http://localhost:8000/health](http://localhost:8000/h
 Salah satu manfaat menggunakan FastAPI adalah adanya dokumentasi yang secara otomatis dihasilkan oleh framework ini.
 Buka URL [http://localhost:8000/docs](http://localhost:8000/docs), anda akan disajikan halaman dokumentasi Swagger secara otomatis!
 
+![Screenshot UI](img/swagger.jpg)
+
 ## Endpoint Kedua: NER
 
 Sekarang kita akan buat endpoint untuk menunjang aplikasi utama kita. Aplikasi ini akan melakukan *named entity recognition* (NER) ke teks berbahasa Indonesia yang diberikan.
 Hasilnya, kita akan mendapatkan daftar *named entity* berjenis orang (person atau per), tempat (location atau loc), dan organisasi (organisation atau org) yang ada di sebuah teks berbahasa Indonesia.
+Perhatikan diagram berikut untuk lebih jelasnya.
+
+![diagram API](img/API.jpg)
 
 ### Instalasi
 
@@ -123,6 +128,25 @@ def extract_entity(sentence: Sentence):
 ```
 
 Semua pekerjaan berat NER dilakukan oleh library polyglot dengan menginstansiasi kelas `Text`.
+
+Saatnya mencoba API yang sudah anda buat! Jika belum, jalankan server uvicorn
+
+```bash
+uvicorn main:app
+```
+
+lalu buka browser, navigasi ke `http://localhost:8000`, klik tombol `Try it out` di bagian POST /entity,
+coba masukkan json dengan format seperti di bawah di dalam kolom `Request body`.
+
+```json
+{
+    "text": "text yang ingin anda ekstrak named entity-nya"
+}
+```
+
+Setelah itu lihat hasil response dari API server di bagian server response, kita akan lihat data respon API kita dalam bentuk JSON.
+
+
 
 ## Validasi
 

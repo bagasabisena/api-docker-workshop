@@ -8,13 +8,22 @@ Workshop ini saya buat untuk Hukumonline, terutama untuk teman-teman data engine
 
 ## Intro
 
-Di Hukumonline, tim data engineer bekerja secara eksklusif menggunakan Python. 
-Kami menemukan banyak kasus dimana aplikasi atau servis yang kami buat harus dipakai oleh tim lain, misal tim backend, yang tidak bekerja dengan Python. 
+Di Hukumonline, tim data engineer bekerja secara eksklusif menggunakan Python.
+Kami menemukan banyak kasus dimana aplikasi atau servis yang kami buat harus dipakai oleh tim lain, misal tim backend, yang tidak bekerja dengan Python.
 Disinilah API berguna. Aplikasi python kami bungkus dengan API sehingga bisa diakses menggunakan panggilan REST. Di workshop ini kami akan menggunakan framework [FastAPI](https://fastapi.tiangolo.com).
 
 Setelah aplikasi dibuat, tentu kami harus men-*deploy* aplikasi tersebut ke *production*. Disini kami menggunakan Docker sebagai solusi *deployment*. Aplikasi REST API yang akan digunakan sebagai contoh di workshop ini cocok untuk menggambarkan skenario dunia nyata. Aplikasi contoh yang akan dikembangkan membutuhkan lebih dari satu Docker container. Oleh karena itu dibutuhkan solusi untuk men-*deploy* beberapa container tersebut sebagai satu kesatuan. Konsep ini lazim disebut *orchestration*. Kita akan mulai dengan deployment di satu mesin menggunakan *docker compose*, lalu akan dilanjutkan dengan orkestrasi multi-server menggunakan AWS Elastic Container Service (ECS).
 
 Workshop ini dibuat sesuai kebutuhan tim di Hukumonline, namun materi ini saya desain seumum mungkin agar bisa bermanfaat untuk pembaca lain. Semoga bermanfaat!
+
+## Aplikasi
+
+Kita akan membuat aplikasi yang akan kita namakan APINER: API untuk named entity recognition.
+Aplikasi ini akan melakukan *named entity recognition* (NER) ke teks berbahasa Indonesia yang diberikan.
+Hasilnya, kita akan mendapatkan daftar *named entity* berjenis orang (person atau per), tempat (location atau loc), dan organisasi (organisation atau org) yang ada di sebuah teks berbahasa Indonesia.
+Perhatikan diagram berikut untuk lebih jelasnya.
+
+![diagram API](img/API.jpg)
 
 ## Materi
 
