@@ -29,8 +29,8 @@ Perhatikan diagram berikut untuk lebih jelasnya.
 
 Materi workshop dikemas dalam beberapa post berikut:
 
-1. [Perkenalan REST API menggunakan framework FastAPI](1-Intro-FastAPI.md)
-2. [Mengemas API dengan Docker](2-Dockerise.md)
+1. [Membuat APINER menggunakan framework FastAPI](1-Intro-FastAPI.md)
+2. [Mengemas APINER dengan Docker](2-Dockerise.md)
 3. [Improvisasi API dengan background worker berbasis Celery](3-Worker.md)
 4. [Deployment menggunakan docker-compose](4-Docker-Compose.md)
 5. [Deployment menggunakan AWS ECS](5-AWS-ECS.md)

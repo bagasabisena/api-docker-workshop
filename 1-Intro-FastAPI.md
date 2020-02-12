@@ -1,4 +1,4 @@
-# 1 - Perkenalan REST API menggunakan framework FastAPI
+# 1 - Membuat APINER menggunakan framework FastAPI
 
 ## Persiapan
 
@@ -64,7 +64,7 @@ Perhatikan diagram berikut untuk lebih jelasnya.
 Untuk melakukan fungsi NER, kita akan menggunakan library [Polyglot](https://polyglot.readthedocs.io/en/latest/index.html). Pertama kita perlu melakukan instalasi package yang dibutuhkan. Untuk linux (ubuntu), lakukan perintah berikut:
 
 ```bash
-sudo apt install gcc build-essential libicu-dev
+sudo apt-get install gcc build-essential libicu-dev
 conda install numpy nomkl
 pip install polyglot pycld2 morfessor pyicu
 ```
@@ -127,7 +127,7 @@ def extract_entity(sentence: Sentence):
     return entities
 ```
 
-Semua pekerjaan berat NER dilakukan oleh library polyglot dengan menginstansiasi kelas `Text`.
+Semua pekerjaan berat NER dilakukan oleh library polyglot dengan menginstansiasi kelas `Text`. Seperti endpoint `/health`, kita memberikan respon berupa JSON.
 
 Saatnya mencoba API yang sudah anda buat! Jika belum, jalankan server uvicorn
 
@@ -144,9 +144,11 @@ coba masukkan json dengan format seperti di bawah di dalam kolom `Request body`.
 }
 ```
 
+![Contoh Input untuk API](img/contoh1.jpg)
+
 Setelah itu lihat hasil response dari API server di bagian server response, kita akan lihat data respon API kita dalam bentuk JSON.
 
-
+![Contoh respons dari API](img/contoh2.jpg)
 
 ## Validasi
 
@@ -185,7 +187,8 @@ curl -X POST "http://127.0.0.1:8000/entity" -H "accept: application/json" -H "Co
 ```
 
 Output:
-```bash
+
+```json
 {"detail":[{"loc":["body","sentence","text"],"msg":"field required","type":"value_error.missing"}]
 ```
 
@@ -194,7 +197,8 @@ curl -X POST "http://127.0.0.1:8000/entity" -H "accept: application/json" -H "Co
 ```
 
 Output:
-```bash
+
+```json
 {"detail":[{"loc":["body","sentence","text"],"msg":"none is not an allowed value","type":"type_error.none.not_allowed"}]}
 ```
 

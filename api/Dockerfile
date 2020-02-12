@@ -1,8 +1,8 @@
 FROM python:3.7
 
-RUN apt update -yqq \
-    && apt upgrade -yqq \
-    && apt install -yqq --no-install-recommends \
+RUN apt-get update -yqq \
+    && apt-get upgrade -yqq \
+    && apt-get install -yqq --no-install-recommends \
         gcc build-essential libicu-dev
 
 RUN pip install numpy fastapi pytest uvicorn \
